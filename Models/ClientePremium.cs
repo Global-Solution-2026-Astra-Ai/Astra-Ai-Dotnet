@@ -8,7 +8,7 @@ namespace AstraAiDotnet.Models
         public decimal DemandaContratadaGwh { get; private set; }
         public string StatusCadastro { get; private set; }
 
-        public ICollection<LogTransacao> Transacoes { get; set; } = new List<LogTransacao>();
+        public ICollection<LogTransacao> Transacoes { get; private set; } = new List<LogTransacao>();
 
         public ClientePremium() { }
 
@@ -23,5 +23,10 @@ namespace AstraAiDotnet.Models
         public void SetRazaoSocial(string novaRazaoSocial) => RazaoSocial = novaRazaoSocial;
         public void SetDemanda(decimal novaDemanda) => DemandaContratadaGwh = novaDemanda;
         public void SetStatus(string novoStatus) => StatusCadastro = novoStatus;
+
+        public void AddTransacao(LogTransacao transacao)
+        {
+            Transacoes.Add(transacao);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace AstraAiDotnet.Models
         public decimal PrecoMinPorGwh { get; private set; }
         public string StatusLeilao { get; private set; }
 
-        public ICollection<LogTransacao> LogTransacoes { get; set; } = new List<LogTransacao>();
+        public ICollection<LogTransacao> LogTransacoes { get; private set; } = new List<LogTransacao>();
 
         public Leilao() { }
 
@@ -28,7 +28,18 @@ namespace AstraAiDotnet.Models
 
         public void SetHoraInicio(DateTime horaInicio) => DataHoraInicio = horaInicio;
         public void SetHoraFim(DateTime novaHora) => DataHoraFim = novaHora;
-        public void SetGwhDisponivel(decimal novoGwh) => GwhDisponivel = novoGwh;
         public void SetStatus(string novoStatus) => StatusLeilao = novoStatus;
+        
+        public void SetGwhDisponivel(decimal novoGwh) {
+            if (novoGwh < 0)
+            throw new ArgumentException("GWh inválido");
+
+            GwhDisponivel = novoGwh;
+        }
+
+        public void AddLogTransacao(LogTransacao transacao)
+        {            
+            LogTransacoes.Add(transacao);
+        }
     }
 }

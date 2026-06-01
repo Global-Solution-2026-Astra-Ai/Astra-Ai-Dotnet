@@ -24,7 +24,11 @@ namespace AstraAiDotnet.Models
         }
 
         public void SetValorArrematado(decimal novoValor) => ValorArrematado = novoValor;
-        public void SetTaxaAstra(decimal novaTaxa) => TaxaAstra = novaTaxa;
         public void SetDataFaturamento(DateTime novaData) => DataFaturamento = novaData;
+
+        public void CalcularTaxaAstra()
+        {
+            TaxaAstra = ValorArrematado * 0.05m;
+        }
     }
 }
