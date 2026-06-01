@@ -9,15 +9,15 @@ namespace AstraAiDotnet.Data
         {
         }
 
-        public DbSet<AstClientePremium> ClientesPremium { get; set; }
-        public DbSet<AstLeilao> Leiloes { get; set; }
-        public DbSet<AstLogTransacao> LogTransacoes { get; set; }
+        public DbSet<ClientePremium> ClientesPremium { get; set; }
+        public DbSet<Leilao> Leiloes { get; set; }
+        public DbSet<LogTransacao> LogTransacoes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<AstClientePremium>(entity =>
+            modelBuilder.Entity<ClientePremium>(entity =>
             {
                 entity.ToTable("AST_CLIENTE_PREMIUM");
 
@@ -56,7 +56,7 @@ namespace AstraAiDotnet.Data
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
-            modelBuilder.Entity<AstLeilao>(entity =>
+            modelBuilder.Entity<Leilao>(entity =>
             {
                 entity.ToTable("AST_LEILAO_BIDDING");
 
@@ -100,7 +100,7 @@ namespace AstraAiDotnet.Data
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
-            modelBuilder.Entity<AstLogTransacao>(entity =>
+            modelBuilder.Entity<LogTransacao>(entity =>
             {
                 entity.ToTable("AST_LOG_TRANSACAO");
 
