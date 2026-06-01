@@ -1,0 +1,6 @@
+@Astra_Ai_Dotnet_HostAddress = http://localhost:5270
+
+GET {{Astra_Ai_Dotnet_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
