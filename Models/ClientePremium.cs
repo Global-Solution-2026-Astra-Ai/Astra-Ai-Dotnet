@@ -8,6 +8,7 @@ namespace AstraAiDotnet.Models
         public decimal DemandaContratadaGwh { get; private set; }
         public string StatusCadastro { get; private set; }
 
+        //deixar readonly?
         public ICollection<LogTransacao> Transacoes { get; private set; } = new List<LogTransacao>();
 
         public ClientePremium() { }
