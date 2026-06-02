@@ -1,9 +1,9 @@
 using AstraAiDotnet.Data;
-using AstraAiDotnet.Models;
-using AstraAiDotnet.Repositories.Interfaces;
+using AstraAiDotnet.ClientesPremium.Models;
+using AstraAiDotnet.ClientesPremium.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace AstraAiDotnet.Repositories.Implementations
+namespace AstraAiDotnet.ClientesPremium.Repositories.Implementations
 {
     public class ClientePremiumRepository : IClientePremiumRepository
     {

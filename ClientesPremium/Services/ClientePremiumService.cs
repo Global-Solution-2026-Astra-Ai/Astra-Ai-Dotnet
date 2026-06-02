@@ -1,8 +1,8 @@
-using AstraAiDotnet.DTOs;
-using AstraAiDotnet.Models;
-using AstraAiDotnet.Repositories.Interfaces;
+using AstraAiDotnet.ClientesPremium.DTOs;
+using AstraAiDotnet.ClientesPremium.Models;
+using AstraAiDotnet.ClientesPremium.Repositories.Interfaces;
 
-namespace AstraAiDotnet.Services
+namespace AstraAiDotnet.ClientesPremium.Services
 {
     public class ClientePremiumService
     {

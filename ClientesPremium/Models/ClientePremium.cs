@@ -1,4 +1,6 @@
-namespace AstraAiDotnet.Models
+using AstraAiDotnet.Models;
+
+namespace AstraAiDotnet.ClientesPremium.Models
 {
     public class ClientePremium
     {
@@ -8,7 +10,8 @@ namespace AstraAiDotnet.Models
         public decimal DemandaContratadaGwh { get; private set; }
         public string StatusCadastro { get; private set; }
 
-        //deixar readonly?
+        //TODO: deixar readonly, realemente necessário? 
+        // TODO: sempre vai haver um log de transação para cada cliente? 
         public ICollection<LogTransacao> Transacoes { get; private set; } = new List<LogTransacao>();
 
         public ClientePremium() { }

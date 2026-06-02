@@ -1,7 +1,8 @@
-namespace AstraAiDotnet.DTOs
+namespace AstraAiDotnet.ClientesPremium.DTOs
 {
-    public class ClientePremiumRequest
+    public class ClientePremiumResponse
     {
+        public long IdCliente { get; set; }
         public string RazaoSocial { get; set; }
         public string Cnpj { get; set; }
         public decimal DemandaContratadaGwh { get; set; }

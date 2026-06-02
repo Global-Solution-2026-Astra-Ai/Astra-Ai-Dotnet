@@ -1,6 +1,6 @@
-using AstraAiDotnet.Models;
+using AstraAiDotnet.ClientesPremium.Models;
 
-namespace AstraAiDotnet.Repositories.Interfaces
+namespace AstraAiDotnet.ClientesPremium.Repositories.Interfaces
 {
     public interface IClientePremiumRepository
     {

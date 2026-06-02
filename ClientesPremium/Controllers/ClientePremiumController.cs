@@ -1,9 +1,9 @@
-using AstraAiDotnet.DTOs;
-using AstraAiDotnet.Models;
-using AstraAiDotnet.Services;
+using AstraAiDotnet.ClientesPremium.DTOs;
+using AstraAiDotnet.ClientesPremium.Models;
+using AstraAiDotnet.ClientesPremium.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AstraAiDotnet.Controllers
+namespace AstraAiDotnet.ClientesPremium.Controllers
 {
     [ApiController]
     [Route("api/clientes-premium")]
