@@ -53,7 +53,18 @@ namespace AstraAiDotnet.Controllers
 
         /// <summary>
         /// Cadastra um novo cliente premium
+        /// TODO: validar REMARKS
         /// </summary>
+        /// <remarks>
+        /// Exemplo de requisição:
+        /// POST /api/clientes-premium
+        /// {
+        ///     "razaoSocial": "Empresa XYZ Ltda",
+        ///     "cnpj": "12.345.678/0001-90",
+        ///     "demandaContratadaGwh": 150.75, 
+        ///     "statusCadastro": "Ativo"
+        /// }
+        /// </remarks>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
