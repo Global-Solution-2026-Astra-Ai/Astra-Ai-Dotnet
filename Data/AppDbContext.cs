@@ -47,13 +47,10 @@ namespace AstraAiDotnet.Data
                     .HasPrecision(6, 2);
 
                 entity.Property(e => e.StatusCadastro)
-                    .HasColumnName("status_cadatro")
+                    .IsRequired()
+                    .HasColumnName("status_cadastro")
                     .HasMaxLength(20);
 
-                entity.HasMany(e => e.Transacoes)
-                    .WithOne(t => t.ClienteVencedor)
-                    .HasForeignKey(t => t.IdClienteVencedor)
-                    .OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<Leilao>(entity =>
@@ -79,8 +76,7 @@ namespace AstraAiDotnet.Data
 
                 entity.Property(e => e.DataHoraFim)
                     .HasColumnName("data_hora_fim")
-                    .HasColumnType("TIMESTAMP")
-                    .HasPrecision(5, 2);
+                    .HasColumnType("TIMESTAMP");
 
                 entity.Property(e => e.GwhDisponivel)
                     .HasColumnName("gwh_disponivel")
@@ -94,10 +90,6 @@ namespace AstraAiDotnet.Data
                     .HasColumnName("status_leilao")
                     .HasMaxLength(20);
 
-                entity.HasMany(e => e.LogTransacoes)
-                    .WithOne(t => t.Leilao)
-                    .HasForeignKey(t => t.IdLeilao)
-                    .OnDelete(DeleteBehavior.Restrict);
             });
 
             modelBuilder.Entity<LogTransacao>(entity =>
