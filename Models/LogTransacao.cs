@@ -14,21 +14,21 @@ namespace AstraAiDotnet.Models
 
         public LogTransacao() { }
 
-        public LogTransacao(long idLeilao, long idClienteVencedor, decimal valorArrematado, decimal taxaAstra, DateTime dataFaturamento)
+        public LogTransacao(long idLeilao, long idClienteVencedor, decimal valorArrematado, DateTime dataFaturamento)
         {
             IdLeilao = idLeilao;
             IdClienteVencedor = idClienteVencedor;
             ValorArrematado = valorArrematado;
-            TaxaAstra = taxaAstra;
+            TaxaAstra = CalcularTaxaAstra();
             DataFaturamento = dataFaturamento;
         }
 
         public void SetValorArrematado(decimal novoValor) => ValorArrematado = novoValor;
-        public void SetDataFaturamento(DateTime novaData) => DataFaturamento = novaData;
 
-        public void CalcularTaxaAstra()
+        public void SetDataFaturamento(DateTime novaData) => DataFaturamento = novaData;
+        public decimal CalcularTaxaAstra()
         {
-            TaxaAstra = ValorArrematado * 0.05m;
+            return ValorArrematado * 0.05m;
         }
     }
 }
