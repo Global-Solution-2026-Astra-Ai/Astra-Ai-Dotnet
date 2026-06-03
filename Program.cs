@@ -1,5 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using AstraAiDotnet.Data;
+using AstraAiDotnet.ClientesPremium.Services;
+using AstraAiDotnet.Leiloes.Services;
+using AstraAiDotnet.ClientesPremium.Repositories.Interfaces;
+using AstraAiDotnet.ClientesPremium.Repositories.Implementations;
+using AstraAiDotnet.Leiloes.Repositories.Interfaces;
+using AstraAiDotnet.Leiloes.Repositories.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,10 +13,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Configurar DbContext
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString = builder.Configuration.GetConnectionString("OracleConnection");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseOracle(connectionString)
-);
+    options.UseOracle(connectionString,b => b.UseOracleSQLCompatibility(OracleSQLCompatibility.DatabaseVersion19)));
+
+builder.Services.AddScoped<IClientePremiumRepository, ClientePremiumRepository>();
+builder.Services.AddScoped<ClientePremiumService>();
+
+builder.Services.AddScoped<ILeilaoRepository, LeilaoRepository>();
+builder.Services.AddScoped<LeilaoService>();
 
 // Add Swagger/OpenAPI
 builder.Services.AddEndpointsApiExplorer();
