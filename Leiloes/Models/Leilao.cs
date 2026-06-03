@@ -1,4 +1,6 @@
-namespace AstraAiDotnet.Models
+using AstraAiDotnet.LogTransacoes.Models;
+
+namespace AstraAiDotnet.Leiloes.Models
 {
     public class Leilao
     {

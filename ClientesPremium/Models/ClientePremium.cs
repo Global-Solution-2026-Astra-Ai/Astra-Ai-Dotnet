@@ -1,4 +1,4 @@
-using AstraAiDotnet.Models;
+using AstraAiDotnet.LogTransacoes.Models;
 
 namespace AstraAiDotnet.ClientesPremium.Models
 {

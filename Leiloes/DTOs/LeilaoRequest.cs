@@ -1,8 +1,7 @@
-namespace AstraAiDotnet.DTOs
+namespace AstraAiDotnet.Leiloes.DTOs
 {
-    public class LeilaoResponse
+    public class LeilaoRequest
     {
-        public long IdLeilao { get; set; }
         public long IdSatelite { get; set; }
         public long IdRcdennaOrigem { get; set; }
         public DateTime DataHoraInicio { get; set; }

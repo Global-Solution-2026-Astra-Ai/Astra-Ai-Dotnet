@@ -1,4 +1,7 @@
-namespace AstraAiDotnet.Models
+using AstraAiDotnet.ClientesPremium.Models;
+using AstraAiDotnet.Leiloes.Models;
+
+namespace AstraAiDotnet.LogTransacoes.Models
 {
     public class LogTransacao
     {

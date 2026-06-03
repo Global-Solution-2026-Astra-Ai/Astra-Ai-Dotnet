@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using AstraAiDotnet.Models;
+using AstraAiDotnet.Leiloes.Models;
+using AstraAiDotnet.LogTransacoes.Models;
 using AstraAiDotnet.ClientesPremium.Models;
 
 namespace AstraAiDotnet.Data

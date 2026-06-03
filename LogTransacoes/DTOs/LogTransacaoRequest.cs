@@ -1,12 +1,10 @@
-namespace AstraAiDotnet.DTOs
+namespace AstraAiDotnet.LogTransacoes.DTOs
 {
-    public class LogTransacaoResponse
+    public class LogTransacaoRequest
     {
-        public long IdTransacao { get; set; }
         public long IdLeilao { get; set; }
         public long IdClienteVencedor { get; set; }
         public decimal ValorArrematado { get; set; }
-        public decimal TaxaAstra { get; set; }
         public DateTime DataFaturamento { get; set; }
     }
 }
