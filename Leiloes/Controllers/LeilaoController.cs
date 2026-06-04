@@ -1,5 +1,6 @@
 using AstraAiDotnet.Leiloes.DTOs;
 using AstraAiDotnet.Leiloes.Services;
+using AstraAiDotnet.LogTransacoes.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AstraAiDotnet.Leiloes.Controllers
@@ -137,5 +138,48 @@ namespace AstraAiDotnet.Leiloes.Controllers
                 return NotFound(new { mensagem = ex.Message });
             }
         }
+
+        /// <summary>
+        /// Lista os leilões que estão abertos
+        /// </summary>
+        
+        [HttpGet("abertos")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<LeilaoResponse>>> ListarAbertos()
+        {
+            var leiloesAbertos = await _service.ListarAbertosAsync();
+
+            return Ok(leiloesAbertos);  
+        }
+
+        /// <summary>
+        /// Finaliza um leilão
+        /// </summary>
+        /// <remarks>
+        /// Exemplo de requisição:
+        /// POST /api/leiloes/1/finalizar
+        /// {
+        ///     "idLeilao": 1,
+        ///     "idClienteVencedor": 123,
+        ///     "valorArrematado": 5000.00,
+        /// }
+        /// </remarks>
+        [HttpPost("{id:long}/finalizar")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<LogTransacaoResponse>> FinalizarLeilao([FromBody] LogTransacaoRequest logTransacaoRequest)
+        {
+            try
+            {
+                var logTransacao = await _service.FinalizarLeilaoAsync(logTransacaoRequest);
+                return Ok(logTransacao);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new { mensagem = ex.Message });
+            }
+
+        }
+    
     }
 }
