@@ -15,5 +15,7 @@ namespace AstraAiDotnet.Leiloes.Repositories.Interfaces
         Task DeleteLeilaoAsync(long idLeilao);
 
         Task SalvarAsync();
+        
+        Task<IEnumerable<Leilao>> ListarLeiloesAbertosAsync();
     }
 }

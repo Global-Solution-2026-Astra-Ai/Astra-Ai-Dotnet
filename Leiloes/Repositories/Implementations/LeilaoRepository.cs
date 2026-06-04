@@ -50,5 +50,12 @@ namespace AstraAiDotnet.Leiloes.Repositories.Implementations
             _context.Leiloes.Update(leilao);
             await SalvarAsync();
         }
+
+        public async Task<IEnumerable<Leilao>> ListarLeiloesAbertosAsync()
+        {
+            return await _context.Leiloes
+                .Where(l => l.StatusLeilao == "Ativo")
+                .ToListAsync();
+        }
     }
 }
