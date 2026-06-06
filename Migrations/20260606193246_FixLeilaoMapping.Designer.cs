@@ -12,8 +12,8 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace Astra_Ai_Dotnet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260603211532_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260606193246_FixLeilaoMapping")]
+    partial class FixLeilaoMapping
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,32 +30,31 @@ namespace Astra_Ai_Dotnet.Migrations
                     b.Property<long>("IdCliente")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_cliente");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdCliente"));
+                        .HasColumnName("ID_CLIENTE")
+                        .HasDefaultValueSql("SEQ_AST_CLIENTE.NEXTVAL");
 
                     b.Property<string>("Cnpj")
                         .IsRequired()
                         .HasMaxLength(14)
                         .HasColumnType("NVARCHAR2(14)")
-                        .HasColumnName("cnpj");
+                        .HasColumnName("CNPJ");
 
                     b.Property<decimal>("DemandaContratadaGwh")
                         .HasPrecision(6, 2)
                         .HasColumnType("DECIMAL(6,2)")
-                        .HasColumnName("demanda_contratada_gwh");
+                        .HasColumnName("DEMANDA_CONTRATADA_GWH");
 
                     b.Property<string>("RazaoSocial")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("razao_social");
+                        .HasColumnName("RAZAO_SOCIAL");
 
                     b.Property<string>("StatusCadastro")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("NVARCHAR2(20)")
-                        .HasColumnName("status_cadastro");
+                        .HasColumnName("STATUS_CADASTRO");
 
                     b.HasKey("IdCliente")
                         .HasName("AST_CLIENTE_PREMIUM_PK");
@@ -72,41 +71,40 @@ namespace Astra_Ai_Dotnet.Migrations
                     b.Property<long>("IdLeilao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_leilao");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdLeilao"));
+                        .HasColumnName("ID_LEILAO")
+                        .HasDefaultValueSql("SEQ_AST_LEILAO.NEXTVAL");
 
                     b.Property<DateTime>("DataHoraFim")
                         .HasColumnType("TIMESTAMP")
-                        .HasColumnName("data_hora_fim");
+                        .HasColumnName("DATA_HORA_FIM");
 
                     b.Property<DateTime>("DataHoraInicio")
                         .HasColumnType("TIMESTAMP")
-                        .HasColumnName("data_hora_inicio");
+                        .HasColumnName("DATA_HORA_INICIO");
 
                     b.Property<decimal>("GwhDisponivel")
                         .HasPrecision(10, 2)
                         .HasColumnType("DECIMAL(10,2)")
-                        .HasColumnName("gwh_disponivel");
+                        .HasColumnName("GWH_DISPONIVEL");
 
-                    b.Property<long>("IdRcdennaOrigem")
+                    b.Property<long>("IdRectennaOrigem")
                         .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_rcdenna_origem");
+                        .HasColumnName("ID_RECTENNA_ORIGEM");
 
                     b.Property<long>("IdSatelite")
                         .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_satelite");
+                        .HasColumnName("ID_SATELITE");
 
                     b.Property<decimal>("PrecoMinPorGwh")
                         .HasPrecision(10, 2)
                         .HasColumnType("DECIMAL(10,2)")
-                        .HasColumnName("preco_min_por_gwh");
+                        .HasColumnName("PRECO_MIN_POR_GWH");
 
                     b.Property<string>("StatusLeilao")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("NVARCHAR2(20)")
-                        .HasColumnName("status_leilao");
+                        .HasColumnName("STATUS_LEILAO");
 
                     b.HasKey("IdLeilao")
                         .HasName("AST_LEILAO_BIDDING_PK");
@@ -119,31 +117,30 @@ namespace Astra_Ai_Dotnet.Migrations
                     b.Property<long>("IdTransacao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_transacao");
-
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdTransacao"));
+                        .HasColumnName("ID_TRANSACAO")
+                        .HasDefaultValueSql("SEQ_AST_TRANSACAO.NEXTVAL");
 
                     b.Property<DateTime>("DataFaturamento")
                         .HasColumnType("DATE")
-                        .HasColumnName("data_faturamento");
+                        .HasColumnName("DATA_FATURAMENTO");
 
                     b.Property<long>("IdClienteVencedor")
                         .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_cliente_vencedor");
+                        .HasColumnName("ID_CLIENTE_VENCEDOR");
 
                     b.Property<long>("IdLeilao")
                         .HasColumnType("NUMBER(19)")
-                        .HasColumnName("id_leilao");
+                        .HasColumnName("ID_LEILAO");
 
                     b.Property<decimal>("TaxaAstra")
                         .HasPrecision(10, 2)
                         .HasColumnType("DECIMAL(10,2)")
-                        .HasColumnName("taxa_oneracao_astra");
+                        .HasColumnName("TAXA_ASTRA");
 
                     b.Property<decimal>("ValorArrematado")
                         .HasPrecision(10, 2)
                         .HasColumnType("DECIMAL(10,2)")
-                        .HasColumnName("valor_arrematado");
+                        .HasColumnName("VALOR_ARREMATADO");
 
                     b.HasKey("IdTransacao")
                         .HasName("AST_LOG_TRANSACAO_PK");

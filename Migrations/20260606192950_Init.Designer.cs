@@ -3,6 +3,7 @@ using System;
 using AstraAiDotnet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 
@@ -11,9 +12,11 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace Astra_Ai_Dotnet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260606192950_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -27,8 +30,9 @@ namespace Astra_Ai_Dotnet.Migrations
                     b.Property<long>("IdCliente")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(19)")
-                        .HasColumnName("ID_CLIENTE")
-                        .HasDefaultValueSql("SEQ_AST_CLIENTE.NEXTVAL");
+                        .HasColumnName("ID_CLIENTE");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdCliente"));
 
                     b.Property<string>("Cnpj")
                         .IsRequired()
@@ -114,8 +118,9 @@ namespace Astra_Ai_Dotnet.Migrations
                     b.Property<long>("IdTransacao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(19)")
-                        .HasColumnName("ID_TRANSACAO")
-                        .HasDefaultValueSql("SEQ_AST_TRANSACAO.NEXTVAL");
+                        .HasColumnName("ID_TRANSACAO");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("IdTransacao"));
 
                     b.Property<DateTime>("DataFaturamento")
                         .HasColumnType("DATE")
