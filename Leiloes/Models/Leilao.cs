@@ -6,7 +6,7 @@ namespace AstraAiDotnet.Leiloes.Models
     {
         public long IdLeilao { get; private set; }
         public long IdSatelite { get; private set; }
-        public long IdRcdennaOrigem { get; private set; }
+        public long IdRectennaOrigem { get; private set; }
         public DateTime DataHoraInicio { get; private set; }
         public DateTime DataHoraFim { get; private set; }
         public decimal GwhDisponivel { get; private set; }
@@ -17,10 +17,10 @@ namespace AstraAiDotnet.Leiloes.Models
 
         public Leilao() { }
 
-        public Leilao(long idSatelite, long idRcdennaOrigem, DateTime dataHoraInicio, DateTime dataHoraFim, decimal gwhDisponivel, decimal precoMinPorGwh, string statusLeilao)
+        public Leilao(long idSatelite, long idRectennaOrigem, DateTime dataHoraInicio, DateTime dataHoraFim, decimal gwhDisponivel, decimal precoMinPorGwh, string statusLeilao)
         {
             IdSatelite = idSatelite;
-            IdRcdennaOrigem = idRcdennaOrigem;
+            IdRectennaOrigem = idRectennaOrigem;
             DataHoraInicio = dataHoraInicio;
             DataHoraFim = dataHoraFim;
             GwhDisponivel = gwhDisponivel;
