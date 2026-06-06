@@ -19,11 +19,14 @@ namespace AstraAiDotnet.Leiloes.Services
 
         private static LeilaoResponse MapToResponse(Leilao leilao)
         {
+            ValidarDatasLeilao(leilao.DataHoraInicio, leilao.DataHoraFim);
+            ValidarStatusLeilao(leilao.StatusLeilao);
+
             return new LeilaoResponse
             {
                 IdLeilao = leilao.IdLeilao,
                 IdSatelite = leilao.IdSatelite,
-                IdRcdennaOrigem = leilao.IdRcdennaOrigem,
+                IdRectennaOrigem = leilao.IdRectennaOrigem,
                 DataHoraInicio = leilao.DataHoraInicio,
                 DataHoraFim = leilao.DataHoraFim,
                 GwhDisponivel = leilao.GwhDisponivel,
@@ -53,10 +56,11 @@ namespace AstraAiDotnet.Leiloes.Services
         public async Task<LeilaoResponse> CadastrarAsync(LeilaoRequest leilaoRequest)
         {
             ValidarDatasLeilao(leilaoRequest.DataHoraInicio, leilaoRequest.DataHoraFim);
+            ValidarStatusLeilao(leilaoRequest.StatusLeilao);
 
             var leilao = new Leilao(
                 leilaoRequest.IdSatelite,
-                leilaoRequest.IdRcdennaOrigem,
+                leilaoRequest.IdRectennaOrigem,
                 leilaoRequest.DataHoraInicio,
                 leilaoRequest.DataHoraFim,
                 leilaoRequest.GwhDisponivel,
@@ -79,6 +83,7 @@ namespace AstraAiDotnet.Leiloes.Services
             }
 
             ValidarDatasLeilao(leilaoRequest.DataHoraInicio, leilaoRequest.DataHoraFim);
+            ValidarStatusLeilao(leilaoRequest.StatusLeilao);
 
             leilao.SetHoraInicio(leilaoRequest.DataHoraInicio);
             leilao.SetHoraFim(leilaoRequest.DataHoraFim);
@@ -128,9 +133,9 @@ namespace AstraAiDotnet.Leiloes.Services
             if ((leilao is null) || (leilao.IdLeilao != logTransacaoRequest.IdLeilao))
             {
                 throw new KeyNotFoundException($"Leilão com ID {logTransacaoRequest.IdLeilao} não encontrado.");
-            } else if (leilao.StatusLeilao != "Ativo")
+            } else if (leilao.StatusLeilao != "Aberto")
             {
-                throw new ArgumentException("Leilão não está ativo e não pode ser finalizado.");
+                throw new ArgumentException("Leilão não está aberto e não pode ser finalizado.");
             } else if (logTransacaoRequest.ValorArrematado < leilao.PrecoMinPorGwh)
             {
                 throw new ArgumentException("Valor arrematado é inferior ao preço mínimo estipulado por GWh.");
@@ -141,6 +146,16 @@ namespace AstraAiDotnet.Leiloes.Services
             await _repository.UpdateLeilaoAsync(leilao);
 
             return await _logTransacaoService.RegistrarLogTransacaoAsync(logTransacaoRequest);
+        }
+
+        private static void ValidarStatusLeilao(string statusLeilao)
+        {
+            var statusValidos = new List<string> { "Aberto", "Finalizado", "Cancelado" };
+
+            if (!statusValidos.Contains(statusLeilao))
+            {
+                throw new ArgumentException($"Status de leilão inválido. Status válidos: {string.Join(", ", statusValidos)}");
+            }
         }
 
     }
