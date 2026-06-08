@@ -9,6 +9,6 @@ namespace AstraAiDotnet.Leiloes.DTOs
         public DateTime DataHoraFim { get; set; }
         public decimal GwhDisponivel { get; set; }
         public decimal PrecoMinPorGwh { get; set; }
-        public string StatusLeilao { get; set; }
+        public string StatusLeilao { get; set; } = String.Empty;
     }
 }

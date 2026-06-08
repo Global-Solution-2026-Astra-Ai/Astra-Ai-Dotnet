@@ -11,7 +11,7 @@ namespace AstraAiDotnet.Leiloes.Models
         public DateTime DataHoraFim { get; private set; }
         public decimal GwhDisponivel { get; private set; }
         public decimal PrecoMinPorGwh { get; private set; }
-        public string StatusLeilao { get; private set; }
+        public string StatusLeilao { get; private set; } = String.Empty;
 
         public ICollection<LogTransacao> LogTransacoes { get; private set; } = new List<LogTransacao>();
 
