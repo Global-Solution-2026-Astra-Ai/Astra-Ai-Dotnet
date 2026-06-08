@@ -12,8 +12,8 @@ namespace AstraAiDotnet.LogTransacoes.Models
         public decimal TaxaAstra { get; private set; }
         public DateTime DataFaturamento { get; private set; }
 
-        public Leilao Leilao { get; set; }
-        public ClientePremium ClienteVencedor { get; set; }
+        public Leilao Leilao { get; set; } = null!;
+        public ClientePremium ClienteVencedor { get; set; } = null!;
 
         public LogTransacao() { }
 

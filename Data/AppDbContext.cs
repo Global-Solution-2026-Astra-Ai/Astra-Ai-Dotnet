@@ -31,26 +31,27 @@ namespace AstraAiDotnet.Data
                     .HasDatabaseName("UK_CLIENTE_CNPJ");
 
                 entity.Property(e => e.IdCliente)
-                    .HasColumnName("id_cliente")
+                    .HasColumnName("ID_CLIENTE")
+                    .HasDefaultValueSql("SEQ_AST_CLIENTE.NEXTVAL")
                     .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.RazaoSocial)
                     .IsRequired()
-                    .HasColumnName("razao_social")
+                    .HasColumnName("RAZAO_SOCIAL")
                     .HasMaxLength(100);
 
                 entity.Property(e => e.Cnpj)
                     .IsRequired()
-                    .HasColumnName("cnpj")
+                    .HasColumnName("CNPJ")
                     .HasMaxLength(14);
 
                 entity.Property(e => e.DemandaContratadaGwh)
-                    .HasColumnName("demanda_contratada_gwh")
+                    .HasColumnName("DEMANDA_CONTRATADA_GWH")
                     .HasPrecision(6, 2);
 
                 entity.Property(e => e.StatusCadastro)
                     .IsRequired()
-                    .HasColumnName("status_cadastro")
+                    .HasColumnName("STATUS_CADASTRO")
                     .HasMaxLength(20);
 
             });
@@ -63,33 +64,34 @@ namespace AstraAiDotnet.Data
                     .HasName("AST_LEILAO_BIDDING_PK");
 
                 entity.Property(e => e.IdLeilao)
-                    .HasColumnName("id_leilao")
+                    .HasColumnName("ID_LEILAO")
+                    .HasDefaultValueSql("SEQ_AST_LEILAO.NEXTVAL")
                     .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.IdSatelite)
-                    .HasColumnName("id_satelite");
+                    .HasColumnName("ID_SATELITE");
 
-                entity.Property(e => e.IdRcdennaOrigem)
-                    .HasColumnName("id_rcdenna_origem");
+                entity.Property(e => e.IdRectennaOrigem)
+                    .HasColumnName("ID_RECTENNA_ORIGEM");
 
                 entity.Property(e => e.DataHoraInicio)
-                    .HasColumnName("data_hora_inicio")
+                    .HasColumnName("DATA_HORA_INICIO")
                     .HasColumnType("TIMESTAMP");
 
                 entity.Property(e => e.DataHoraFim)
-                    .HasColumnName("data_hora_fim")
+                    .HasColumnName("DATA_HORA_FIM")
                     .HasColumnType("TIMESTAMP");
 
                 entity.Property(e => e.GwhDisponivel)
-                    .HasColumnName("gwh_disponivel")
+                    .HasColumnName("GWH_DISPONIVEL")
                     .HasPrecision(10, 2);
 
                 entity.Property(e => e.PrecoMinPorGwh)
-                    .HasColumnName("preco_min_por_gwh")
+                    .HasColumnName("PRECO_MIN_POR_GWH")
                     .HasPrecision(10, 2);
 
                 entity.Property(e => e.StatusLeilao)
-                    .HasColumnName("status_leilao")
+                    .HasColumnName("STATUS_LEILAO")
                     .HasMaxLength(20);
 
             });
@@ -102,25 +104,26 @@ namespace AstraAiDotnet.Data
                     .HasName("AST_LOG_TRANSACAO_PK");
 
                 entity.Property(e => e.IdTransacao)
-                    .HasColumnName("id_transacao")
+                    .HasColumnName("ID_TRANSACAO")
+                    .HasDefaultValueSql("SEQ_AST_TRANSACAO.NEXTVAL")
                     .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.IdLeilao)
-                    .HasColumnName("id_leilao");
+                    .HasColumnName("ID_LEILAO");
 
                 entity.Property(e => e.IdClienteVencedor)
-                    .HasColumnName("id_cliente_vencedor");
+                    .HasColumnName("ID_CLIENTE_VENCEDOR");
 
                 entity.Property(e => e.ValorArrematado)
-                    .HasColumnName("valor_arrematado")
+                    .HasColumnName("VALOR_ARREMATADO")
                     .HasPrecision(10, 2);
 
                 entity.Property(e => e.TaxaAstra)
-                    .HasColumnName("taxa_oneracao_astra")
+                    .HasColumnName("TAXA_ASTRA")
                     .HasPrecision(10, 2);
 
                 entity.Property(e => e.DataFaturamento)
-                    .HasColumnName("data_faturamento")
+                    .HasColumnName("DATA_FATURAMENTO")
                     .HasColumnType("DATE");
 
                 entity.HasOne(e => e.Leilao)

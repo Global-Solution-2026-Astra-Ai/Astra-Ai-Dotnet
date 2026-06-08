@@ -58,7 +58,7 @@ namespace AstraAiDotnet.Leiloes.Controllers
         /// POST /api/leiloes
         /// {
         ///     "idSatelite": 1,
-        ///     "idRcdennaOrigem": 10,
+        ///     "IdRectennaOrigem": 10,
         ///     "dataHoraInicio": "2026-06-10T08:00:00",
         ///     "dataHoraFim": "2026-06-10T18:00:00",
         ///     "gwhDisponivel": 150.5,

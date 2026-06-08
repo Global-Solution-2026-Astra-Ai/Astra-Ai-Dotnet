@@ -5,10 +5,10 @@ namespace AstraAiDotnet.ClientesPremium.Models
     public class ClientePremium
     {
         public long IdCliente { get; private set; }
-        public string RazaoSocial { get; private set; }
-        public string Cnpj { get; private set; }
+        public string RazaoSocial { get; private set; } = String.Empty;
+        public string Cnpj { get; private set; } = String.Empty;
         public decimal DemandaContratadaGwh { get; private set; }
-        public string StatusCadastro { get; private set; }
+        public string StatusCadastro { get; private set; } = String.Empty;
 
         //TODO: deixar readonly, realemente necessário? 
         // TODO: sempre vai haver um log de transação para cada cliente? 
