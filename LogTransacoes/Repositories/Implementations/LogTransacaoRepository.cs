@@ -19,5 +19,15 @@ namespace AstraAiDotnet.LogTransacoes.Repositories.Implementations
             await _context.LogTransacoes.AddAsync(logTransacao);
             await _context.SaveChangesAsync();
         }
+
+        public async Task ExcluirLogTransacaoAsync(long idTransacao)
+        {
+            var logTransacao = await _context.LogTransacoes.FindAsync(idTransacao);
+            if (logTransacao is not null)
+            {
+                _context.LogTransacoes.Remove(logTransacao);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

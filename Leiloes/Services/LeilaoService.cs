@@ -103,6 +103,8 @@ namespace AstraAiDotnet.Leiloes.Services
             {
                 throw new KeyNotFoundException($"Leilão com ID {idLeilao} não encontrado.");
             }
+            
+            await _logTransacaoService.ExcluirLogTransacaoAsync(idLeilao);
 
             await _repository.DeleteLeilaoAsync(idLeilao);
         }
