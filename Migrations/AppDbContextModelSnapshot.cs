@@ -22,6 +22,12 @@ namespace Astra_Ai_Dotnet.Migrations
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.HasSequence<int>("SEQ_AST_CLIENTE");
+
+            modelBuilder.HasSequence<int>("SEQ_AST_LEILAO");
+
+            modelBuilder.HasSequence<int>("SEQ_AST_TRANSACAO");
+
             modelBuilder.Entity("AstraAiDotnet.ClientesPremium.Models.ClientePremium", b =>
                 {
                     b.Property<long>("IdCliente")

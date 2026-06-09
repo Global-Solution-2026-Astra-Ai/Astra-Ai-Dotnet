@@ -12,8 +12,8 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace Astra_Ai_Dotnet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260606193246_FixLeilaoMapping")]
-    partial class FixLeilaoMapping
+    [Migration("20260609010914_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,12 @@ namespace Astra_Ai_Dotnet.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.HasSequence<int>("SEQ_AST_CLIENTE");
+
+            modelBuilder.HasSequence<int>("SEQ_AST_LEILAO");
+
+            modelBuilder.HasSequence<int>("SEQ_AST_TRANSACAO");
 
             modelBuilder.Entity("AstraAiDotnet.ClientesPremium.Models.ClientePremium", b =>
                 {
