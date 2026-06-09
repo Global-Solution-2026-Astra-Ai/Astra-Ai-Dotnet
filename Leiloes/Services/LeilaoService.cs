@@ -114,10 +114,6 @@ namespace AstraAiDotnet.Leiloes.Services
                 throw new ArgumentException("A data de término deve ser posterior à data de início.");
             }
 
-            if (dataInicio < DateTime.Now)
-            {
-                throw new ArgumentException("A data de início não pode ser no passado.");
-            }
         }
 
         public async Task<List<LeilaoResponse>> ListarAbertosAsync()
