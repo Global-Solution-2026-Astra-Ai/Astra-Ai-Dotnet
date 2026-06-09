@@ -6,17 +6,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Astra_Ai_Dotnet.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateSequence<int>(
+                name: "SEQ_AST_CLIENTE");
+
+            migrationBuilder.CreateSequence<int>(
+                name: "SEQ_AST_LEILAO");
+
+            migrationBuilder.CreateSequence<int>(
+                name: "SEQ_AST_TRANSACAO");
+
             migrationBuilder.CreateTable(
                 name: "AST_CLIENTE_PREMIUM",
                 columns: table => new
                 {
-                    ID_CLIENTE = table.Column<long>(type: "NUMBER(19)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
+                    ID_CLIENTE = table.Column<long>(type: "NUMBER(19)", nullable: false, defaultValueSql: "SEQ_AST_CLIENTE.NEXTVAL"),
                     RAZAO_SOCIAL = table.Column<string>(type: "NVARCHAR2(100)", maxLength: 100, nullable: false),
                     CNPJ = table.Column<string>(type: "NVARCHAR2(14)", maxLength: 14, nullable: false),
                     DEMANDA_CONTRATADA_GWH = table.Column<decimal>(type: "DECIMAL(6,2)", precision: 6, scale: 2, nullable: false),
@@ -49,8 +57,7 @@ namespace Astra_Ai_Dotnet.Migrations
                 name: "AST_LOG_TRANSACAO",
                 columns: table => new
                 {
-                    ID_TRANSACAO = table.Column<long>(type: "NUMBER(19)", nullable: false)
-                        .Annotation("Oracle:Identity", "START WITH 1 INCREMENT BY 1"),
+                    ID_TRANSACAO = table.Column<long>(type: "NUMBER(19)", nullable: false, defaultValueSql: "SEQ_AST_TRANSACAO.NEXTVAL"),
                     ID_LEILAO = table.Column<long>(type: "NUMBER(19)", nullable: false),
                     ID_CLIENTE_VENCEDOR = table.Column<long>(type: "NUMBER(19)", nullable: false),
                     VALOR_ARREMATADO = table.Column<decimal>(type: "DECIMAL(10,2)", precision: 10, scale: 2, nullable: false),
@@ -102,6 +109,15 @@ namespace Astra_Ai_Dotnet.Migrations
 
             migrationBuilder.DropTable(
                 name: "AST_LEILAO_BIDDING");
+
+            migrationBuilder.DropSequence(
+                name: "SEQ_AST_CLIENTE");
+
+            migrationBuilder.DropSequence(
+                name: "SEQ_AST_LEILAO");
+
+            migrationBuilder.DropSequence(
+                name: "SEQ_AST_TRANSACAO");
         }
     }
 }

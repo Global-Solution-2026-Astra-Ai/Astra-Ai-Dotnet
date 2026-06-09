@@ -19,6 +19,18 @@ namespace AstraAiDotnet.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.HasSequence<int>("SEQ_AST_CLIENTE")
+                .StartsAt(1)
+                .IncrementsBy(1);
+            
+            modelBuilder.HasSequence<int>("SEQ_AST_LEILAO")
+                .StartsAt(1)
+                .IncrementsBy(1);
+
+            modelBuilder.HasSequence<int>("SEQ_AST_TRANSACAO")
+                .StartsAt(1)
+                .IncrementsBy(1);
+
             modelBuilder.Entity<ClientePremium>(entity =>
             {
                 entity.ToTable("AST_CLIENTE_PREMIUM");
