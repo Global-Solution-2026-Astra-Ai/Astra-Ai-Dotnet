@@ -106,6 +106,8 @@ Astra-Ai-Dotnet
 │
 ├── LogTransacoes
 │   ├── DTOs
+│   │   ├── LogTransacaoRequest.cs
+│   │   └── LogTransacaoResponse.cs
 │   ├── Models
 │   │   └── LogTransacao.cs
 │   ├── Repositories
