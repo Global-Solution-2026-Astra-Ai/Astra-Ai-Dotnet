@@ -85,9 +85,12 @@ namespace AstraAiDotnet.Leiloes.Services
             ValidarDatasLeilao(leilaoRequest.DataHoraInicio, leilaoRequest.DataHoraFim);
             ValidarStatusLeilao(leilaoRequest.StatusLeilao);
 
+            leilao.SetIdSatelite(leilaoRequest.IdSatelite);
+            leilao.SetIdRectennaOrigem(leilaoRequest.IdRectennaOrigem);
             leilao.SetHoraInicio(leilaoRequest.DataHoraInicio);
             leilao.SetHoraFim(leilaoRequest.DataHoraFim);
             leilao.SetGwhDisponivel(leilaoRequest.GwhDisponivel);
+
             leilao.SetStatus(leilaoRequest.StatusLeilao);
 
             await _repository.UpdateLeilaoAsync(leilao);
@@ -103,6 +106,8 @@ namespace AstraAiDotnet.Leiloes.Services
             {
                 throw new KeyNotFoundException($"Leilão com ID {idLeilao} não encontrado.");
             }
+            
+            await _logTransacaoService.ExcluirLogTransacaoAsync(idLeilao);
 
             await _repository.DeleteLeilaoAsync(idLeilao);
         }
@@ -137,7 +142,7 @@ namespace AstraAiDotnet.Leiloes.Services
                 throw new ArgumentException("Valor arrematado é inferior ao preço mínimo estipulado por GWh.");
             }
 
-            leilao.SetStatus("Inativo");
+            leilao.SetStatus("Finalizado");
 
             await _repository.UpdateLeilaoAsync(leilao);
 

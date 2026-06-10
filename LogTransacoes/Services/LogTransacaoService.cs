@@ -39,5 +39,11 @@ namespace AstraAiDotnet.LogTransacoes.Services
 
             return MapToResponse(logTransacao);
         }
+
+        public async Task ExcluirLogTransacaoAsync(long idTransacao)
+        {
+            await _logTransacaoRepository.ExcluirLogTransacaoAsync(idTransacao);
+        }
+
     }
 }
