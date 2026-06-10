@@ -28,9 +28,12 @@ namespace AstraAiDotnet.Leiloes.Models
             StatusLeilao = statusLeilao;
         }
 
+        public void SetIdSatelite(long idSatelite) => IdSatelite = idSatelite;
+        public void SetIdRectennaOrigem(long idRectennaOrigem) => IdRectennaOrigem = idRectennaOrigem;
         public void SetHoraInicio(DateTime horaInicio) => DataHoraInicio = horaInicio;
         public void SetHoraFim(DateTime novaHora) => DataHoraFim = novaHora;
         public void SetStatus(string novoStatus) => StatusLeilao = novoStatus;
+        public void SetPrecoMinPorGwh(decimal novoPreco) => PrecoMinPorGwh = novoPreco;
         
         public void SetGwhDisponivel(decimal novoGwh) {
             if (novoGwh < 0)
